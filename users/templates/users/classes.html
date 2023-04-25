@@ -1,0 +1,23 @@
+{% extends "home/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+	
+	
+	{% if student_classroom_check %}
+	<h2>HI THIS IS {{ student_classroom }} </h2>
+	{% else %}
+	<div class="content-section">	
+		<form method="POST" enctype="multipart/form-data"> 
+			{% csrf_token %}     
+			<fieldset class="form-group">
+					<legend class="border-bottom mb-4">Join a Class</legend>
+					{{ c_form|crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">Join</button>
+			</div>
+		</form>
+	</div>
+	{% endif %}
+{% endblock content %}
